@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Dark Mode (Default) */
+html.dark {
+  background-color: #050816;
+  color: #f3f3f3;
+}
+
+html.dark body {
+  background-color: #050816;
+}
+
+/* Light Mode */
+html:not(.dark) {
+  background-color: #ffffff;
+  color: #1a202c;
+}
+
+html:not(.dark) body {
+  background-color: #ffffff;
+}
+
+/* Light mode navbar - white background with shadow */
+html:not(.dark) .bg-primary {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode sections */
+html:not(.dark) .bg-tertiary {
+  background-color: #f9fafb !important;
+}
+
+html:not(.dark) .bg-black-100,
+html:not(.dark) .bg-black-200 {
+  background-color: #f3f4f6 !important;
+}
+
+/* Light mode text colors */
+html:not(.dark) .text-white {
+  color: #111827 !important;
+}
+
+html:not(.dark) .text-secondary {
+  color: #6b7280 !important;
+}
+
+/* Light mode for specific sections */
+html:not(.dark) .exp-section {
+  background-color: #e0f2fe !important;
+  color: #0c4a6e !important;
+}
+
+html:not(.dark) .tech-section {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* Ensure cards and overlays are visible in light mode */
+html:not(.dark) .shadow-card {
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Light mode for any dark text that needs to stay dark */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4 {
+  color: #111827 !important;
+}
+
+/* Light mode for links */
+html:not(.dark) a {
+  color: #2563eb;
+}
+
+html:not(.dark) a:hover {
+  color: #1d4ed8;
+}
+
+/* Footer in light mode - black text on light background */
+html:not(.dark) footer {
+  background-color: #e5e7eb !important;
+  color: #000000 !important;
+}
+
+html:not(.dark) footer:hover {
+  background-color: #d1d5db !important;
+}
+
+/* Contact and About cards in light mode - dark background with white text */
+html:not(.dark) .bg-white\/10,
+html:not(.dark) .from-white\/10,
+html:not(.dark) [class*="bg-white/10"] {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%) !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .backdrop-blur-xl {
+  backdrop-filter: none !important;
+}
+
+/* Ensure all text in contact/about cards is white in light mode */
+html:not(.dark) .bg-white\/10 *,
+html:not(.dark) .from-white\/10 *,
+html:not(.dark) [class*="bg-white/10"] * {
+  color: #ffffff !important;
+}
+
+/* Links inside contact/about cards should remain blue/white */
+html:not(.dark) .bg-white\/10 a,
+html:not(.dark) .from-white\/10 a,
+html:not(.dark) [class*="bg-white/10"] a {
+  color: #93c5fd !important;
+}
+
+html:not(.dark) .bg-white\/10 a:hover,
+html:not(.dark) .from-white\/10 a:hover,
+html:not(.dark) [class*="bg-white/10"] a:hover {
+  color: #60a5fa !important;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.wiggle-hover:hover {
+  animation: wiggle 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes circleMove {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+.animate-circle {
+  animation-name: circleMove;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-out-up {
+  animation: fadeOutUp 0.5s ease forwards;
+}
+
+.exp-section{
+  background-color: #234C6A;
+}
+.tech-section{
+  background-color: #1d425f;
+}
