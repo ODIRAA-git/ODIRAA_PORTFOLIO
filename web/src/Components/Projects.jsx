@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import EASYM from "../assets/EASYM.png";
-import Project2 from "../assets/project2.png";
-import Project3 from "../assets/project3.png";
+import Project2 from "../assets/Project2.png";
+import Project3 from "../assets/Project3.png";
 import { Italic } from "lucide-react";
 
 function Projects() {
