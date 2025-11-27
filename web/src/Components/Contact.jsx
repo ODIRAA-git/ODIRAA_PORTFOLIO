@@ -101,7 +101,6 @@ const Contact = () => {
           {/* FormSubmit hidden fields */}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_honey" className="hidden" />
-          <input type="hidden" name="_next" value="https://yourwebsite.com/" />
           <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio!" />
 
           <input
