@@ -109,14 +109,14 @@ const Contact = () => {
             name="name"
             placeholder="Your Name"
             required
-            className="p-3 rounded bg-black/30 border border-white/10 focus:border-blue-400 transition bg-white"
+            className="p-3 rounded bg-white text-gray-900 border border-gray-300 focus:border-blue-400 transition placeholder:text-gray-500"
           />
           <input
             type="email"
             name="email"
             placeholder="Your Email"
             required
-            className="p-3 rounded bg-black/30 border border-white/10 focus:border-blue-400 transition bg-white"
+            className="p-3 rounded bg-white text-gray-900 border border-gray-300 focus:border-blue-400 transition placeholder:text-gray-500"
           />
 
           <textarea
@@ -124,7 +124,7 @@ const Contact = () => {
             rows="6"
             placeholder="Your Message"
             required
-            className="p-3 rounded bg-black/30 border border-white/10 focus:border-blue-400 transition bg-white"
+            className="p-3 rounded bg-white text-gray-900 border border-gray-300 focus:border-blue-400 transition placeholder:text-gray-500"
           ></textarea>
 
          <motion.button
