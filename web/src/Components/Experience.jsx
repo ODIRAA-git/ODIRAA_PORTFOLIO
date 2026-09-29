@@ -1,45 +1,43 @@
-import React from "react";
+import Reveal, { SectionHeading } from "./Reveal";
+import { experience } from "../data";
 
 function Experience() {
-  const experiences = [
-    {
-      name: "Frontend Developer",
-      company: "Axinity GmbH.Co.Kg",
-      level: "Intern",
-      duration: "2025 - Present",
-      
-    },
-    {
-      name: "Frontend Developer",
-      company: "Swilook UG",
-      level: "Working Student",
-      duration: "2023 - 2024",
-    },
-    {
-      name: "IT Support",
-      company: "REDI School of Digital Integration",
-      level: "Working Student",
-      duration: "2022 - 2023",
-    },
-   
-  ];
-
   return (
-    <section className="exp-section max-w-4xl mx-auto my-12 p-4">
-      <h2 className="text-2xl font-bold mb-6">Professional Experience</h2>
-      <ul className="space-y-4">
-        {experiences.map((exp, index) => (
-          <li
-            key={index}
-            className="p-4 border rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
-          >
-            <h3 className="text-xl font-semibold">{exp.name}</h3>
-            <p className="text-white-100">Company: {exp.company}</p>
-            <p className="text-white-100">Level: {exp.level}</p>
-            <p className="text-white-100">Experience: {exp.duration}</p>
-          </li>
-        ))}
-      </ul>
+    <section id="experience" className="section bg-surface/50">
+      <div className="container-page">
+        <SectionHeading eyebrow="Experience" title="Where I've worked" />
+
+        <ol className="relative ml-2 border-l border-line">
+          {experience.map((job, i) => (
+            <Reveal as="li" key={`${job.company}-${job.period}`} delay={i * 0.08} className="relative mb-8 pl-8 last:mb-0">
+              <span
+                className={`absolute -left-[7px] top-6 h-3.5 w-3.5 rounded-full border-2 border-bg ${
+                  i === 0 ? "bg-accent ring-4 ring-accent/20" : "bg-muted"
+                }`}
+              />
+              <div className="card p-6 transition-colors hover:border-accent/40">
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <h3 className="text-lg font-semibold">{job.role}</h3>
+                    <p className="text-accent">{job.company}</p>
+                  </div>
+                  <div className="text-right text-sm text-muted">
+                    <p className="font-medium">{job.period}</p>
+                    <p>{job.type}</p>
+                  </div>
+                </div>
+                {job.highlights.length > 0 && (
+                  <ul className="mt-4 list-disc space-y-1.5 pl-5 text-muted marker:text-accent">
+                    {job.highlights.map((h) => (
+                      <li key={h}>{h}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

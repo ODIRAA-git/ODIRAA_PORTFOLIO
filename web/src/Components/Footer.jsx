@@ -1,22 +1,33 @@
-import React from "react";
+import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { profile } from "../data";
 
 function Footer() {
-  // Scroll smoothly to top when footer is clicked
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <footer
-      id="footer"
-      onClick={scrollToTop}
-      className="py-4 bg-gray-900 text-white text-center text-sm cursor-pointer hover:bg-gray-800 transition-colors"
-      title="Click to scroll to top"
-    >
-      © {new Date().getFullYear()} Madu Odiraa Perpetua. All rights reserved.
+    <footer className="border-t border-line">
+      <div className="container-page flex flex-col items-center justify-between gap-4 py-8 text-sm text-muted sm:flex-row">
+        <p>
+          © {new Date().getFullYear()} {profile.name}. Built with React & Tailwind CSS.
+        </p>
+        <div className="flex items-center gap-2">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="GitHub">
+            <Github size={16} />
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn">
+            <Linkedin size={16} />
+          </a>
+          <a href={`mailto:${profile.email}`} className="icon-btn" aria-label="Email">
+            <Mail size={16} />
+          </a>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="icon-btn"
+            aria-label="Back to top"
+          >
+            <ArrowUp size={16} />
+          </button>
+        </div>
+      </div>
     </footer>
   );
 }

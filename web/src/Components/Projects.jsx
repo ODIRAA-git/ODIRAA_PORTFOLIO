@@ -1,96 +1,70 @@
-import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import EASYM from "../assets/EASYM.png";
-import Project2 from "../assets/Project2.png";
-import Project3 from "../assets/Project3.png";
-import { Italic } from "lucide-react";
+import { ArrowUpRight, Github, PlayCircle } from "lucide-react";
+import Reveal, { SectionHeading } from "./Reveal";
+import { projects } from "../data";
 
-function Projects() {
-  const projects = [
-    {
-      img: EASYM,
-      title: "EASYMEAL",
-      subtitles: "A Recipe Search Engine",
-      link: "https://eaziimeal.netlify.app/",
-      isExternal: true,
-      techStack: "React • JavaScript • REST API • Responsive Design"
-    },
-    {
-      img: Project2,
-      title: "LIST VAULT",
-      subtitles: "Family Shopping List App",
-      link: "/list-vault-demo",
-      isExternal: false,
-      techStack: "Flutter • Supabase • PostgreSQL • Real-time Sync"
-    },
-    {
-      img: Project3,
-      title: "BOOKFLIX",
-      subtitles: "The Reader´s Guide",
-      link: "https://bookfliix.netlify.app/",
-      isExternal: true,
-      techStack: "React • TypeScript • Vite • Supabase • CSS"
-    },
-  ];
+function ProjectCard({ project }) {
+  const { title, tagline, description, image, tech, live, code, caseStudy } = project;
 
   return (
-    <section className="py-20 px-6" id="projects">
-      <h2 className="text-4xl font-bold mb-12 text-center">My Projects</h2>
+    <article className="card group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/10">
+      <div className="aspect-[16/10] overflow-hidden border-b border-line bg-surface-2">
+        <img
+          src={image}
+          alt={`Screenshot of ${title}`}
+          loading="lazy"
+          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-6 md:space-y-0">
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-sm font-medium text-accent">{tagline}</p>
+        <h3 className="mt-1 text-xl font-semibold">{title}</h3>
+        <p className="mt-3 flex-1 text-muted">{description}</p>
 
-        {projects.map((project, index) => {
-          const MotionLink = project.isExternal ? motion.a : motion(Link);
-          const linkProps = project.isExternal
-            ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
-            : { to: project.link };
+        <ul className="mt-5 flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <li key={t} className="chip">{t}</li>
+          ))}
+        </ul>
 
-          return (
-            <div key={index} className="flex-1 max-w-sm">
+        <div className="mt-6 flex flex-wrap gap-4 border-t border-line pt-5 text-sm font-semibold">
+          {caseStudy && (
+            <Link to={caseStudy} className="inline-flex items-center gap-1.5 text-fg hover:text-accent">
+              <PlayCircle size={16} /> Demo & case study
+            </Link>
+          )}
+          {live && (
+            <a href={live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-fg hover:text-accent">
+              Live site <ArrowUpRight size={16} />
+            </a>
+          )}
+          {code && (
+            <a href={code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-fg hover:text-accent">
+              <Github size={16} /> Code
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
 
-              {/* Title outside the anchor (cleanest method) */}
-              <h3 className="text-center text-xl font-bold mb-3" style={{letterSpacing: "5px"}}>
-                {project.title}
-              </h3>
-              {/* Subtitle outside the anchor (cleanest method) */}
-              <p className="text-center text-xl font-bold mb-3 text-blue-300" style={{fontStyle: "Italic"}}>
-                {project.subtitles}
-              </p>
+function Projects() {
+  return (
+    <section id="projects" className="section">
+      <div className="container-page">
+        <SectionHeading eyebrow="Projects" title="Things I've built">
+          A selection of web and mobile apps, from idea to deployment.
+        </SectionHeading>
 
-              <MotionLink
-                {...linkProps}
-                className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer block"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.3, duration: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-auto object-cover"
-                />
-
-                <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col justify-center items-center text-center p-4">
-                  <h3 className="text-white text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <span className="text-blue-400 underline hover:text-blue-300">
-                    View Project
-                  </span>
-                </div>
-              </MotionLink>
-
-              {/* Tech Stack */}
-              <p className="text-center text-sm mt-4 text-gray-400 font-medium">
-                {project.techStack}
-              </p>
-
-            </div>
-          );
-        })}
-
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, i) => (
+            <Reveal key={project.title} delay={i * 0.1} className="h-full">
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
