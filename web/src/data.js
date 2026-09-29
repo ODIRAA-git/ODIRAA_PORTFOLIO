@@ -18,7 +18,7 @@ export const profile = {
 
 export const experience = [
   {
-    role: "Frontend Developer",
+    role: "Programmer",
     company: "Axinity GmbH & Co. KG",
     type: "Internship",
     period: "2025 – Feb 2026",
